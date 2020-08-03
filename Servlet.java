@@ -19,19 +19,20 @@ public class Servlet extends HttpServlet {
     
     public static void get_total(HttpServletResponse response,String date) throws SQLException, IOException{
         Statement stmt=con.createStatement();  
-        ResultSet rs=stmt.executeQuery("SELECT SUM(Active),SUM(Healed) FROM Cases WHERE TDate ="+date); 
+        ResultSet rs=stmt.executeQuery("SELECT SUM(Active),SUM(Healed) FROM Cases WHERE TDate = '"+date+"'");
+        rs.next();		
         String Active = rs.getString(1);
         String Healed = rs.getString(2);
-        
         PrintWriter out = response.getWriter();
         out.println(Active+","+Healed);        
 //        while(rs.next())    
 //        con.close(); 
     }
     
-    public static void get_city(HttpServletResponse response,String date) throws SQLException, IOException{
+    public static void get_city(HttpServletResponse response,String city,String date) throws SQLException, IOException{
         Statement stmt=con.createStatement();  
-        ResultSet rs=stmt.executeQuery("SELECT Active,Healed FROM Cases WHERE City = '$city' AND TDate = "+date); 
+        ResultSet rs=stmt.executeQuery("SELECT Active,Healed FROM Cases WHERE City = '"+city+"' AND TDate = '"+date+"'"); 
+        rs.next();
         String Active = rs.getString(1);
         String Healed = rs.getString(2);
         
@@ -43,11 +44,11 @@ public class Servlet extends HttpServlet {
         
     public static void get_range(HttpServletResponse response,String start,String end) throws SQLException, IOException{
         Statement stmt=con.createStatement();  
-        ResultSet rs=stmt.executeQuery("SELECT * FROM Cases WHERE TDate BETWEEN"+start+" and"+end);         
+        ResultSet rs=stmt.executeQuery("SELECT * FROM Cases WHERE TDate BETWEEN '"+start+"' and'"+end+"'");           
         PrintWriter out = response.getWriter();
              
         while(rs.next()) {
-            out.println(rs.getString(1)+","+rs.getInt(2)+","+rs.getInt(3));
+            out.println(rs.getString(2)+","+rs.getInt(3)+","+rs.getInt(4));
         }   
 //        con.close(); 
     }
@@ -64,6 +65,58 @@ public class Servlet extends HttpServlet {
         }catch(Exception e){ System.out.println(e);}  
 //        }  
     }
+	
+	
+	
+	public static boolean login (HttpServletResponse response,String name ,String pass) throws SQLException {
+	  Statement stmt=con.createStatement();  
+	  ResultSet rs=stmt.executeQuery("SELECT * FROM users WHERE Username='"+name+"' and Password = '"+pass+"'");   
+	  PrintWriter out = response.getWriter();
+	if(!rs.next()) {
+        out.println("Invalid Username or Password!");
+        return false;
+	} else {
+        out.println("Authenticated");
+        return true;
+    }
+    
+}
+
+ public static void edit_city (String city,int id) throws SQLException{
+	 
+		Statement stmt=con.createStatement();  
+		stmt.executeUpdate("UPDATE Cases SET City = '"+city+"' WHERE ID = '"+id+"'"); 
+        
+ }
+	
+ public static void Edit_active (int active,int id)throws SQLException{
+	 
+		Statement stmt=con.createStatement();  
+		stmt.executeUpdate("UPDATE Cases SET Active = '"+active+"' WHERE ID = '"+id+"'"); 
+        
+ }
+ 
+  public static void Edit_healed (int healed,int id) throws SQLException {
+	 
+		Statement stmt=con.createStatement();  
+		stmt.executeUpdate("UPDATE Cases SET Healed = '"+healed+"' WHERE ID = '"+id+"'"); 
+        
+ }
+ 
+  public static void Edit_date (String date,int id) throws SQLException{
+	 
+		Statement stmt=con.createStatement();  
+		stmt.executeUpdate("UPDATE Cases SET TDate = '"+date+"' WHERE ID = '"+id+"'"); 
+        
+ }
+
+  public static void Insert_Record (String city,int active,int healed,String date) throws SQLException{
+	 
+		Statement stmt=con.createStatement();  
+		stmt.executeUpdate("INSERT INTO Cases (City,Active,Healed,TDate) Values ('"+city+"','"+active+"','"+healed+"','"+date+"')"); 
+        
+ }
+ 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
