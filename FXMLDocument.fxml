@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="805.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="httpjavafx.FXMLDocumentController">
+   <children>
+      <Pane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #1b6cd7;" />
+      <Label layoutX="446.0" layoutY="7.0" text="Public Information" textFill="#0c3f7c">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Label>
+      <Line endX="146.0" layoutX="564.0" layoutY="50.0" startX="-118.0" stroke="#0c3f7c" />
+      <Label layoutX="478.0" layoutY="106.0" text="Total confirmed cases up to this date" />
+      <Label fx:id="noOfCases" layoutX="532.0" layoutY="51.0" text="300">
+         <font>
+            <Font name="System Bold" size="50.0" />
+         </font>
+      </Label>
+      <Label layoutX="371.0" layoutY="146.0" text="300">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Circle fill="#1b6cd7" layoutX="360.0" layoutY="164.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <DatePicker layoutX="693.0" layoutY="156.0" prefHeight="27.0" prefWidth="105.0" />
+      <ChoiceBox fx:id="firstCityCB" layoutX="569.0" layoutY="156.0" prefHeight="27.0" prefWidth="105.0" />
+      <Label layoutX="431.0" layoutY="161.0" text="Total confirmed cases in" />
+      <Label layoutX="679.0" layoutY="161.0" text="in" />
+      <Label layoutX="371.0" layoutY="203.0" text="300">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Circle fill="#1b6cd7" layoutX="360.0" layoutY="221.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <DatePicker layoutX="432.0" layoutY="242.0" prefHeight="27.0" prefWidth="105.0" />
+      <ChoiceBox fx:id="secondCityCB" layoutX="570.0" layoutY="213.0" prefHeight="27.0" prefWidth="105.0" />
+      <Label layoutX="431.0" layoutY="218.0" text="Total confirmed cases in" />
+      <Label layoutX="549.0" layoutY="247.0" text="to" />
+      <Label layoutX="678.0" layoutY="218.0" text="from" />
+      <DatePicker layoutX="570.0" layoutY="242.0" prefHeight="27.0" prefWidth="105.0" />
+   </children>
+</AnchorPane>
