@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class Http_testJava {
     
     public static String php_url = "http://localhost/http_test/";
-    public static String servlet = "";
+    public static String servlet = "http://localhost:8080/JSP_server/Servlet";
     public static String Username = "";
     public static String Password = "";
     
@@ -105,13 +105,13 @@ public class Http_testJava {
         
  
         
-//    URL url = new URL(php_url);
-//
-//    URLConnection connect = url.openConnection();
-//    connect.setAllowUserInteraction(true);
-//    connect.setDoInput(true);
-//    connect.setDoOutput(true);
-//    
+    URL url = new URL(servlet);
+
+    URLConnection connect = url.openConnection();
+    connect.setAllowUserInteraction(true);
+    connect.setDoInput(true);
+    connect.setDoOutput(true);
+    
 //    BufferedOutputStream out = new BufferedOutputStream(connect.getOutputStream());
 //    
 //    String request = "ID=1&name=hamza&pass=123&city=Tulkarm";
@@ -119,12 +119,12 @@ public class Http_testJava {
 //    out.write(request.getBytes());
 //    out.close();
 //    
-//     InputStream in = connect.getInputStream();
-//     int c;
-//     while((c = in.read()) != -1){
-//         System.out.print((char)c);
-//     }
-//     
+     InputStream in = connect.getInputStream();
+     int c;
+     while((c = in.read()) != -1){
+         System.out.print((char)c);
+     }
+     
 //        get_total();
     }
 
