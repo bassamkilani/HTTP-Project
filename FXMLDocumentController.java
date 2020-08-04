@@ -12,6 +12,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.stage.Window;
 
 /**
@@ -21,15 +23,29 @@ import javafx.stage.Window;
 public class FXMLDocumentController extends Window implements Initializable {
     
     @FXML
-    private Label label;
+    private Label noOfCases, firstNoCases, secondNoCases;
     
     @FXML
-    private ChoiceBox firstCityCB, secondCityCB;
+    private ChoiceBox firstCityCB, secondCityCB, cityCB1, cityCB2;
+    
+    @FXML
+    private Pane loginPane;
+    
+    @FXML
+        private TextField newCasesTF;
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+        loginPane.setManaged(false);
+        loginPane.setVisible(false);
+    }
+    
+    @FXML
+    private void handleTFAction(ActionEvent event) {
+        noOfCases.setText(newCasesTF.getText());
+        firstNoCases.setText(newCasesTF.getText());
+        secondNoCases.setText(newCasesTF.getText());
+
     }
     
     @Override
@@ -37,11 +53,19 @@ public class FXMLDocumentController extends Window implements Initializable {
         // TODO
         firstCityCB.getItems().removeAll(firstCityCB.getItems());
         firstCityCB.getItems().addAll("Nablus", "Hebron", "Jerusalem", "Jenin", "Ramallah", "Tulkarem");
-        firstCityCB.getSelectionModel().select("Nablus");
+//        firstCityCB.getSelectionModel().select("Nablus");
         
         secondCityCB.getItems().removeAll(secondCityCB.getItems());
         secondCityCB.getItems().addAll("Nablus", "Hebron", "Jerusalem", "Jenin", "Ramallah", "Tulkarem");
-        secondCityCB.getSelectionModel().select("Nablus");
+//        secondCityCB.getSelectionModel().select("Nablus");
+        
+        cityCB1.getItems().removeAll(cityCB1.getItems());
+        cityCB1.getItems().addAll("Nablus", "Hebron", "Jerusalem", "Jenin", "Ramallah", "Tulkarem");
+//        cityCB1.getSelectionModel().select("Nablus");
+        
+        cityCB2.getItems().removeAll(cityCB2.getItems());
+        cityCB2.getItems().addAll("Nablus", "Hebron", "Jerusalem", "Jenin", "Ramallah", "Tulkarem");
+//        cityCB2.getSelectionModel().select("Nablus");
     }    
     
 }

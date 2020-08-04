@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -16,155 +17,219 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="httpjavafx.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="httpjavafx.FXMLDocumentController">
    <children>
-      <Pane layoutX="341.0" prefHeight="500.0" prefWidth="468.0">
+      <Pane layoutX="341.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="460.0">
          <children>
-            <Label layoutX="80.0" text="Public Information" textFill="#0c3f7c">
-               <font>
-                  <Font name="System Bold" size="35.0" />
-               </font>
-            </Label>
-            <Line endX="278.29290771484375" endY="55.0" layoutX="135.0" layoutY="-4.0" startX="-80.70709228515625" startY="55.0" stroke="#0c3f7c" />
-            <Label layoutX="87.0" layoutY="134.0" text="Total confirmed cases up to this date">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="noOfCases" layoutX="191.0" layoutY="60.0" text="300">
-               <font>
-                  <Font name="System Bold" size="50.0" />
-               </font>
-            </Label>
-            <Label fx:id="secondNoCases" layoutX="35.0" layoutY="331.0" text="300">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Label>
+            <GridPane alignment="CENTER" layoutY="15.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="134.0" prefWidth="460.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="453.0" minWidth="10.0" prefWidth="432.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Public Information" textFill="#0c3f7c" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="35.0" />
+                     </font>
+                  </Label>
+                  <Line endX="278.29290771484375" endY="55.0" startX="-80.70709228515625" startY="55.0" stroke="#0c3f7c" strokeLineCap="ROUND" strokeWidth="2.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Label fx:id="noOfCases" alignment="CENTER" contentDisplay="CENTER" text="0" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="50.0" />
+                     </font>
+                  </Label>
+                  <Label text="Total confirmed cases up to this date" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
             <Circle fill="#1b6cd7" layoutX="26.0" layoutY="237.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-            <DatePicker fx:id="secondDateEn" layoutX="258.0" layoutY="371.0" prefHeight="27.0" prefWidth="110.0" />
-            <ChoiceBox fx:id="firstCityCB" layoutX="257.0" layoutY="227.0" prefHeight="27.0" prefWidth="110.0" />
-            <Label layoutX="99.0" layoutY="229.0" text="Total confirmed cases in">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="374.0" layoutY="229.0" text="in">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="firstNoCases" layoutX="35.0" layoutY="215.0" text="300">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Label>
             <Circle fill="#1b6cd7" layoutX="26.0" layoutY="353.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-            <DatePicker fx:id="secondDateSt" layoutX="99.0" layoutY="371.0" prefHeight="27.0" prefWidth="110.0" />
-            <ChoiceBox fx:id="secondCityCB" layoutX="258.0" layoutY="340.0" prefHeight="27.0" prefWidth="110.0" />
-            <Label layoutX="99.0" layoutY="345.0" text="Total confirmed cases in">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="228.0" layoutY="375.0" text="to">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="374.0" layoutY="343.0" text="from">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <DatePicker fx:id="firstDate" layoutX="99.0" layoutY="254.0" prefHeight="27.0" prefWidth="110.0" />
+            <HBox alignment="CENTER_LEFT" fillHeight="false" layoutX="35.0" layoutY="215.0" maxWidth="425.0">
+               <children>
+                  <Label fx:id="firstNoCases" minHeight="-Infinity" minWidth="-Infinity" text="0">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="45.0" prefWidth="155.0" text="Total confirmed cases in">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox layoutX="66.0" layoutY="260.0">
+               <children>
+                  <ChoiceBox fx:id="firstCityCB" prefHeight="25.0" prefWidth="120.0">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ChoiceBox>
+                  <Label text="in">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+                  <DatePicker fx:id="firstDate" prefHeight="25.0" prefWidth="120.0">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </DatePicker>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="35.0" layoutY="331.0" maxWidth="425.0">
+               <children>
+                  <Label fx:id="secondNoCases" text="0">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label text="Total confirmed cases in">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ChoiceBox fx:id="secondCityCB" prefHeight="25.0" prefWidth="120.0">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </ChoiceBox>
+                  <Label text="from" wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="70.0" layoutY="376.0">
+               <children>
+                  <DatePicker fx:id="secondDateSt" prefHeight="25.0" prefWidth="120.0" />
+                  <Label text="to">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Label>
+                  <DatePicker fx:id="secondDateEn" prefHeight="25.0" prefWidth="120.0">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </DatePicker>
+               </children>
+            </HBox>
          </children>
       </Pane>
-      <Pane prefHeight="500.0" prefWidth="341.0" style="-fx-background-color: #1b6cd7;">
+      <Pane prefHeight="510.0" prefWidth="340.0" style="-fx-background-color: #1b6cd7;">
          <children>
-            <Label layoutX="34.0" layoutY="41.0" text="New Entry" textFill="#f2eeee">
+            <Label layoutX="34.0" layoutY="9.0" text="New Entry" textFill="#f2eeee">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="38.0" layoutY="84.0" text="# New Cases:" textFill="WHITE">
+            <Label layoutX="38.0" layoutY="52.0" text="# New Cases:" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="38.0" layoutY="119.0" text="# New Healed:" textFill="WHITE">
+            <Label layoutX="38.0" layoutY="87.0" text="# New Healed:" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="38.0" layoutY="192.0" text="Date of Entry:" textFill="WHITE">
+            <Label layoutX="38.0" layoutY="160.0" text="Date of Entry:" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="38.0" layoutY="155.0" text="City:" textFill="WHITE">
+            <Label layoutX="38.0" layoutY="123.0" text="City:" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="34.0" layoutY="264.0" text="Update Entry" textFill="#f2eeee">
+            <Label layoutX="34.0" layoutY="250.0" text="Update Entry" textFill="#f2eeee">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="38.0" layoutY="307.0" text="Date of Entry:" textFill="WHITE">
+            <Label layoutX="38.0" layoutY="293.0" text="Date of Entry:" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="38.0" layoutY="408.0" text="# Cases:" textFill="WHITE">
+            <Label layoutX="38.0" layoutY="394.0" text="# Cases:" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="38.0" layoutY="345.0" text="City:" textFill="WHITE">
+            <Label layoutX="38.0" layoutY="331.0" text="City:" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="38.0" layoutY="443.0" text="# Healed:" textFill="WHITE">
+            <Label layoutX="38.0" layoutY="429.0" text="# Healed:" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Line endX="150.0" endY="55.0" layoutX="166.0" layoutY="195.0" startX="-133.0" startY="55.0" stroke="WHITE" />
-            <TextField layoutX="167.0" layoutY="85.0" />
-            <DatePicker layoutX="167.0" layoutY="192.0" prefHeight="27.0" prefWidth="149.0" />
-            <TextField layoutX="167.0" layoutY="120.0" />
-            <ChoiceBox fx:id="firstCityCB1" layoutX="167.0" layoutY="155.0" prefHeight="27.0" prefWidth="149.0" />
-            <DatePicker layoutX="167.0" layoutY="307.0" prefHeight="27.0" prefWidth="149.0" />
-            <TextField layoutX="167.0" layoutY="409.0" />
-            <ChoiceBox fx:id="firstCityCB11" layoutX="167.0" layoutY="345.0" prefHeight="27.0" prefWidth="149.0" />
-            <TextField layoutX="167.0" layoutY="444.0" />
+            <Line endX="150.0" endY="55.0" layoutX="166.0" layoutY="186.0" startX="-133.0" startY="55.0" stroke="WHITE" />
+            <TextField fx:id="newCasesTF" layoutX="167.0" layoutY="53.0" onAction="#handleTFAction" />
+            <DatePicker layoutX="167.0" layoutY="160.0" prefHeight="27.0" prefWidth="149.0" />
+            <TextField layoutX="167.0" layoutY="88.0" />
+            <ChoiceBox fx:id="cityCB1" layoutX="167.0" layoutY="123.0" prefHeight="27.0" prefWidth="149.0" />
+            <DatePicker layoutX="167.0" layoutY="293.0" prefHeight="27.0" prefWidth="149.0" />
+            <TextField layoutX="167.0" layoutY="395.0" />
+            <ChoiceBox fx:id="cityCB2" layoutX="167.0" layoutY="331.0" prefHeight="27.0" prefWidth="149.0" />
+            <TextField layoutX="167.0" layoutY="430.0" />
+            <Button layoutX="110.0" layoutY="199.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" text="Insert" />
+            <Button layoutX="110.0" layoutY="469.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" text="Update" />
          </children>
       </Pane>
-      <Pane fx:id="loginPane" prefHeight="500.0" prefWidth="341.0" style="-fx-background-color: grey;">
+      <Pane fx:id="loginPane" prefHeight="510.0" prefWidth="340.0" style="-fx-background-color: grey;">
          <children>
             <Label layoutX="84.0" layoutY="14.0" text="Login" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="66.0" />
                </font>
             </Label>
-            <Label layoutX="110.0" layoutY="102.0" text="For further information" textFill="WHITE" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="110.0" layoutY="98.0" prefHeight="35.0" prefWidth="130.0" text="To make new entries and edit existing ones" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
             <Label layoutX="61.0" layoutY="162.0" text="Username" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Line endX="299.0" endY="55.0" layoutX="-64.0" layoutY="72.0" startX="170.0" startY="55.0" stroke="WHITE" />
+            <Line endX="350.0" endY="55.0" layoutX="-84.0" layoutY="84.0" startX="170.0" startY="55.0" stroke="WHITE" />
             <Label layoutX="61.0" layoutY="267.0" text="Password" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
             <TextField fx:id="usernameTF" layoutX="61.0" layoutY="197.0" prefHeight="35.0" prefWidth="229.0" />
-            <TextField fx:id="passwordTF" layoutX="59.0" layoutY="302.0" prefHeight="35.0" prefWidth="229.0" />
-            <Button fx:id="loginBtn" layoutX="106.0" layoutY="378.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="140.0" text="Login" />
+            <Button fx:id="loginBtn" layoutX="106.0" layoutY="378.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="35.0" prefWidth="140.0" text="Login" />
+            <PasswordField fx:id="passwordTF" layoutX="61.0" layoutY="302.0" prefHeight="35.0" prefWidth="229.0" />
          </children>
       </Pane>
    </children>
