@@ -23,7 +23,7 @@ import javafx.stage.Window;
 public class FXMLDocumentController extends Window implements Initializable {
     
     @FXML
-    private Label noOfCases, firstNoCases, secondNoCases;
+    private Label noOfCasesHealed, noOfCasesActive, firstNoCases, secondNoCases;
     
     @FXML
     private ChoiceBox firstCityCB, secondCityCB, cityCB1, cityCB2;
@@ -42,7 +42,8 @@ public class FXMLDocumentController extends Window implements Initializable {
     
     @FXML
     private void handleTFAction(ActionEvent event) {
-        noOfCases.setText(newCasesTF.getText());
+        noOfCasesHealed.setText(newCasesTF.getText());
+        noOfCasesActive.setText(newCasesTF.getText());
         firstNoCases.setText(newCasesTF.getText());
         secondNoCases.setText(newCasesTF.getText());
 
@@ -52,20 +53,20 @@ public class FXMLDocumentController extends Window implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         firstCityCB.getItems().removeAll(firstCityCB.getItems());
-        firstCityCB.getItems().addAll("Nablus", "Hebron", "Jerusalem", "Jenin", "Ramallah", "Tulkarem");
-//        firstCityCB.getSelectionModel().select("Nablus");
+        firstCityCB.getItems().addAll("Palestine", "Nablus", "Hebron", "Jerusalem", "Jenin", "Ramallah", "Tulkarem");
+        firstCityCB.getSelectionModel().select("Palestine");
         
         secondCityCB.getItems().removeAll(secondCityCB.getItems());
-        secondCityCB.getItems().addAll("Nablus", "Hebron", "Jerusalem", "Jenin", "Ramallah", "Tulkarem");
-//        secondCityCB.getSelectionModel().select("Nablus");
+        secondCityCB.getItems().addAll("Palestine", "Nablus", "Hebron", "Jerusalem", "Jenin", "Ramallah", "Tulkarem");
+        secondCityCB.getSelectionModel().select("Palestine");
         
         cityCB1.getItems().removeAll(cityCB1.getItems());
         cityCB1.getItems().addAll("Nablus", "Hebron", "Jerusalem", "Jenin", "Ramallah", "Tulkarem");
-//        cityCB1.getSelectionModel().select("Nablus");
+//        cityCB1.getSelectionModel().select("Palestine");
         
         cityCB2.getItems().removeAll(cityCB2.getItems());
         cityCB2.getItems().addAll("Nablus", "Hebron", "Jerusalem", "Jenin", "Ramallah", "Tulkarem");
-//        cityCB2.getSelectionModel().select("Nablus");
+//        cityCB2.getSelectionModel().select("Palestine");
     }    
     
 }
