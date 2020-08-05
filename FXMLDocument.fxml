@@ -20,33 +20,8 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="httpjavafx.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="httpjavafx.FXMLDocumentController">
    <children>
-      <Pane fx:id="loginPane" prefHeight="510.0" prefWidth="340.0" style="-fx-background-color: #9c9c9c;">
-         <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#575757" height="145.0" layoutX="76.0" layoutY="-5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.5" width="200.0" />
-            <Label layoutX="99.0" layoutY="14.0" text="Login" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="66.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="110.0" layoutY="98.0" prefHeight="35.0" prefWidth="130.0" text="To make new entries and edit existing ones" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-            <Label layoutX="118.0" layoutY="168.0" text="Username" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Label>
-            <Line endX="350.0" endY="55.0" layoutX="-84.0" layoutY="84.0" startX="170.0" startY="55.0" stroke="WHITE" />
-            <Label layoutX="121.0" layoutY="271.0" text="Password" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Label>
-            <TextField fx:id="usernameTF" layoutX="61.0" layoutY="197.0" prefHeight="35.0" prefWidth="229.0" />
-            <Button fx:id="loginBtn" layoutX="106.0" layoutY="378.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="35.0" prefWidth="140.0" text="Login" />
-            <PasswordField fx:id="passwordTF" layoutX="61.0" layoutY="302.0" prefHeight="35.0" prefWidth="229.0" />
-         </children>
-      </Pane>
       <Pane layoutX="340.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="460.0" style="-fx-background-color: #a5c6ee;">
          <children>
             <GridPane alignment="CENTER" layoutY="13.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="197.0" prefWidth="460.0">
@@ -147,7 +122,7 @@
                               <Insets left="5.0" />
                            </HBox.margin>
                         </Label>
-                        <DatePicker fx:id="firstDate" prefHeight="25.0" prefWidth="120.0">
+                        <DatePicker fx:id="StaticDate" prefHeight="25.0" prefWidth="120.0">
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin>
@@ -156,7 +131,7 @@
                   </HBox>
                   <HBox alignment="CENTER" fillHeight="false" layoutX="54.0" layoutY="42.0" maxWidth="425.0">
                      <children>
-                        <Label fx:id="firstNoCases" minHeight="-Infinity" minWidth="-Infinity" text="0">
+                        <Label fx:id="StaticNoCases" minHeight="-Infinity" minWidth="-Infinity" text="0">
                            <font>
                               <Font name="System Bold" size="30.0" />
                            </font>
@@ -174,7 +149,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="firstNoCases1" minHeight="-Infinity" minWidth="-Infinity" text="0">
+                        <Label fx:id="StaticNoHealed" minHeight="-Infinity" minWidth="-Infinity" text="0">
                            <font>
                               <Font name="System Bold" size="30.0" />
                            </font>
@@ -225,7 +200,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="62.0" layoutY="48.0">
                      <children>
-                        <DatePicker fx:id="secondDateSt" prefHeight="25.0" prefWidth="120.0" />
+                        <DatePicker fx:id="StartDate" prefHeight="25.0" prefWidth="120.0" />
                         <Label text=" &amp; ">
                            <font>
                               <Font size="14.0" />
@@ -234,7 +209,7 @@
                               <Insets left="5.0" />
                            </HBox.margin>
                         </Label>
-                        <DatePicker fx:id="secondDateEn" prefHeight="25.0" prefWidth="120.0">
+                        <DatePicker fx:id="EndDate" prefHeight="25.0" prefWidth="120.0">
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin>
@@ -243,7 +218,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="54.0" layoutY="80.0" maxWidth="425.0">
                      <children>
-                        <Label fx:id="secondNoCases" text="0">
+                        <Label fx:id="RangeNoCases" text="0">
                            <font>
                               <Font name="System Bold" size="30.0" />
                            </font>
@@ -264,7 +239,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="secondNoCases1" text="0">
+                        <Label fx:id="RangeNoHealed" text="0">
                            <font>
                               <Font name="System Bold" size="30.0" />
                            </font>
@@ -287,9 +262,11 @@
                         </Label>
                      </children>
                   </HBox>
+                  <Button fx:id="RangeGet" alignment="CENTER" layoutX="273.0" layoutY="12.0" mnemonicParsing="false" onAction="#handleRangeAction" prefHeight="28.0" prefWidth="89.0" text="Get_Range" />
                </children>
             </Pane>
             <Button alignment="CENTER" layoutX="310.0" layoutY="464.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="89.0" text="Show Graph" />
+            <Button fx:id="StaticGet" alignment="CENTER" layoutX="336.0" layoutY="216.0" mnemonicParsing="false" onAction="#handleStaticAction" prefHeight="28.0" prefWidth="89.0" text="Get_Static" />
          </children>
       </Pane>
       <Pane prefHeight="510.0" prefWidth="340.0" style="-fx-background-color: #d3ecff;">
@@ -345,16 +322,42 @@
                </font>
             </Label>
             <Line endX="150.0" endY="55.0" layoutX="166.0" layoutY="184.0" startX="-133.0" startY="55.0" stroke="#3d515d" />
-            <TextField fx:id="newCasesTF" layoutX="167.0" layoutY="53.0" onAction="#handleTFAction" />
-            <DatePicker layoutX="167.0" layoutY="160.0" prefHeight="27.0" prefWidth="149.0" />
-            <TextField layoutX="167.0" layoutY="88.0" />
+            <TextField fx:id="newActive" layoutX="167.0" layoutY="53.0" />
+            <DatePicker fx:id="NewDate" layoutX="167.0" layoutY="160.0" prefHeight="27.0" prefWidth="149.0" />
+            <TextField fx:id="newHealed" layoutX="167.0" layoutY="88.0" />
             <ChoiceBox fx:id="cityCB1" layoutX="167.0" layoutY="123.0" prefHeight="27.0" prefWidth="149.0" />
-            <DatePicker layoutX="167.0" layoutY="293.0" prefHeight="27.0" prefWidth="149.0" />
-            <TextField layoutX="167.0" layoutY="395.0" />
+            <DatePicker fx:id="UpdateDate" layoutX="167.0" layoutY="293.0" prefHeight="27.0" prefWidth="149.0" />
+            <TextField fx:id="UpdateActive" layoutX="167.0" layoutY="395.0" />
             <ChoiceBox fx:id="cityCB2" layoutX="167.0" layoutY="331.0" prefHeight="27.0" prefWidth="149.0" />
-            <TextField layoutX="167.0" layoutY="430.0" />
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="110.0" layoutY="199.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" text="Insert" textAlignment="CENTER" />
-            <Button alignment="CENTER" layoutX="110.0" layoutY="469.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" text="Update" />
+            <TextField fx:id="UpdateHealed" layoutX="167.0" layoutY="430.0" />
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="110.0" layoutY="199.0" mnemonicParsing="false" onAction="#handleInsertAction" prefHeight="27.0" prefWidth="122.0" text="Insert" textAlignment="CENTER" />
+            <Button alignment="CENTER" layoutX="110.0" layoutY="469.0" mnemonicParsing="false" onAction="#handleUdpateAction" prefHeight="27.0" prefWidth="122.0" text="Update" />
+            <TextField fx:id="ID" layoutX="210.0" layoutY="255.0" prefHeight="25.0" prefWidth="64.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="loginPane" prefHeight="510.0" prefWidth="340.0" style="-fx-background-color: #9c9c9c;">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#575757" height="145.0" layoutX="76.0" layoutY="-5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.5" width="200.0" />
+            <Label layoutX="99.0" layoutY="14.0" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="66.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="110.0" layoutY="98.0" prefHeight="35.0" prefWidth="130.0" text="To make new entries and edit existing ones" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+            <Label layoutX="118.0" layoutY="168.0" text="Username" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Line endX="350.0" endY="55.0" layoutX="-84.0" layoutY="84.0" startX="170.0" startY="55.0" stroke="WHITE" />
+            <Label layoutX="121.0" layoutY="271.0" text="Password" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="usernameTF" layoutX="61.0" layoutY="197.0" prefHeight="35.0" prefWidth="229.0" />
+            <Button fx:id="loginBtn" layoutX="106.0" layoutY="378.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="35.0" prefWidth="140.0" text="Login" />
+            <PasswordField fx:id="passwordTF" layoutX="61.0" layoutY="302.0" prefHeight="35.0" prefWidth="229.0" />
          </children>
       </Pane>
    </children>
