@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="httpjavafx.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="httpjavafx.FXMLDocumentController">
    <children>
-      <Pane layoutX="341.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="460.0">
+      <Pane layoutX="340.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="460.0" style="-fx-background-color: #a5c6ee;">
          <children>
-            <GridPane alignment="CENTER" layoutY="15.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="134.0" prefWidth="460.0">
+            <GridPane alignment="CENTER" layoutY="13.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="197.0" prefWidth="460.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="453.0" minWidth="10.0" prefWidth="432.0" />
               </columnConstraints>
@@ -32,115 +35,260 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="Public Information" textFill="#0c3f7c" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="85.0" stroke="#6c839e" strokeType="INSIDE" width="301.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="264.0" text="Public Information" textFill="#0c3f7c" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <font>
                         <Font name="System Bold" size="35.0" />
                      </font>
                   </Label>
-                  <Line endX="278.29290771484375" endY="55.0" startX="-80.70709228515625" startY="55.0" stroke="#0c3f7c" strokeLineCap="ROUND" strokeWidth="2.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                  <Label fx:id="noOfCases" alignment="CENTER" contentDisplay="CENTER" text="0" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="50.0" />
-                     </font>
-                  </Label>
-                  <Label text="Total confirmed cases up to this date" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+                  <Label text="Total active cases up to this date" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
+                  <Label text="Total healed cases up to this date" GridPane.halignment="CENTER" GridPane.rowIndex="11" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                     <children>
+                        <Label fx:id="noOfCasesActive" alignment="CENTER" contentDisplay="CENTER" text="0" textAlignment="CENTER" textFill="#9a1515">
+                           <font>
+                              <Font name="System Bold" size="50.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="43.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../media/active.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
+                     <children>
+                        <Label fx:id="noOfCasesHealed" alignment="CENTER" contentDisplay="CENTER" text="0" textAlignment="CENTER" textFill="#3a8a22">
+                           <font>
+                              <Font name="System Bold" size="50.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="43.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../media/healed.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
                </children>
             </GridPane>
-            <Circle fill="#1b6cd7" layoutX="26.0" layoutY="237.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fill="#1b6cd7" layoutX="26.0" layoutY="353.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-            <HBox alignment="CENTER_LEFT" fillHeight="false" layoutX="35.0" layoutY="215.0" maxWidth="425.0">
+            <Group layoutX="70.0" layoutY="251.0" />
+            <Group layoutX="70.0" layoutY="345.0" />
+            <Pane layoutX="65.0" layoutY="230.0" minHeight="85.0" minWidth="335.0" style="-fx-background-color: #c3d2e1#c3d2e1;">
                <children>
-                  <Label fx:id="firstNoCases" minHeight="-Infinity" minWidth="-Infinity" text="0">
-                     <font>
-                        <Font name="System Bold" size="30.0" />
-                     </font>
-                  </Label>
-                  <Label prefHeight="45.0" prefWidth="155.0" text="Total confirmed cases in">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="15.0" />
-                     </HBox.margin>
-                  </Label>
+                  <HBox alignment="CENTER" layoutX="7.0" layoutY="7.0">
+                     <children>
+                        <Label prefHeight="27.0" text="Cases in">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Group>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                           <children>
+                              <ChoiceBox fx:id="firstCityCB" prefHeight="25.0" prefWidth="120.0" />
+                           </children>
+                        </Group>
+                        <Label prefHeight="29.0" prefWidth="15.0" text="on">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <DatePicker fx:id="firstDate" prefHeight="25.0" prefWidth="120.0">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </DatePicker>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" fillHeight="false" layoutX="54.0" layoutY="42.0" maxWidth="425.0">
+                     <children>
+                        <Label fx:id="firstNoCases" minHeight="-Infinity" minWidth="-Infinity" text="0">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <Label text="active " textAlignment="CENTER" textFill="#9a1515">
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="cases and">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="firstNoCases1" minHeight="-Infinity" minWidth="-Infinity" text="0">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="healed" textFill="#3a8a22">
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text=" cases">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <HBox layoutX="66.0" layoutY="260.0">
+            </Pane>
+            <Pane layoutX="65.0" layoutY="344.0" prefHeight="120.0" prefWidth="335.0" style="-fx-background-color: #c3d2e1#c3d2e1;">
                <children>
-                  <ChoiceBox fx:id="firstCityCB" prefHeight="25.0" prefWidth="120.0">
-                     <HBox.margin>
-                        <Insets left="5.0" />
-                     </HBox.margin>
-                  </ChoiceBox>
-                  <Label text="in">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="15.0" />
-                     </HBox.margin>
-                  </Label>
-                  <DatePicker fx:id="firstDate" prefHeight="25.0" prefWidth="120.0">
-                     <HBox.margin>
-                        <Insets left="15.0" />
-                     </HBox.margin>
-                  </DatePicker>
+                  <HBox alignment="CENTER" layoutX="7.0" layoutY="7.0">
+                     <children>
+                        <Label text="Cases in">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="secondCityCB" prefHeight="25.0" prefWidth="120.0">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </ChoiceBox>
+                        <Label text="between">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="62.0" layoutY="48.0">
+                     <children>
+                        <DatePicker fx:id="secondDateSt" prefHeight="25.0" prefWidth="120.0" />
+                        <Label text=" &amp; ">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <DatePicker fx:id="secondDateEn" prefHeight="25.0" prefWidth="120.0">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </DatePicker>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="54.0" layoutY="80.0" maxWidth="425.0">
+                     <children>
+                        <Label fx:id="secondNoCases" text="0">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <Label text="active" textFill="#9a1515">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text=" cases and" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="secondNoCases1" text="0">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="healed" textFill="#3a8a22">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text=" cases" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="35.0" layoutY="331.0" maxWidth="425.0">
-               <children>
-                  <Label fx:id="secondNoCases" text="0">
-                     <font>
-                        <Font name="System Bold" size="30.0" />
-                     </font>
-                  </Label>
-                  <Label text="Total confirmed cases in">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="15.0" />
-                     </HBox.margin>
-                  </Label>
-                  <ChoiceBox fx:id="secondCityCB" prefHeight="25.0" prefWidth="120.0">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </ChoiceBox>
-                  <Label text="from" wrapText="true">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="15.0" />
-                     </HBox.margin>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="70.0" layoutY="376.0">
-               <children>
-                  <DatePicker fx:id="secondDateSt" prefHeight="25.0" prefWidth="120.0" />
-                  <Label text="to">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="15.0" />
-                     </HBox.margin>
-                  </Label>
-                  <DatePicker fx:id="secondDateEn" prefHeight="25.0" prefWidth="120.0">
-                     <HBox.margin>
-                        <Insets left="15.0" />
-                     </HBox.margin>
-                  </DatePicker>
-               </children>
-            </HBox>
+            </Pane>
+            <Button alignment="CENTER" layoutX="310.0" layoutY="464.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="89.0" text="Show Graph" />
+         </children>
+      </Pane>
+      <Pane fx:id="loginPane" prefHeight="510.0" prefWidth="340.0" style="-fx-background-color: grey;">
+         <children>
+            <Label layoutX="84.0" layoutY="14.0" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="66.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="110.0" layoutY="98.0" prefHeight="35.0" prefWidth="130.0" text="To make new entries and edit existing ones" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+            <Label layoutX="61.0" layoutY="162.0" text="Username" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Line endX="350.0" endY="55.0" layoutX="-84.0" layoutY="84.0" startX="170.0" startY="55.0" stroke="WHITE" />
+            <Label layoutX="61.0" layoutY="267.0" text="Password" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="usernameTF" layoutX="61.0" layoutY="197.0" prefHeight="35.0" prefWidth="229.0" />
+            <Button fx:id="loginBtn" layoutX="106.0" layoutY="378.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="35.0" prefWidth="140.0" text="Login" />
+            <PasswordField fx:id="passwordTF" layoutX="61.0" layoutY="302.0" prefHeight="35.0" prefWidth="229.0" />
          </children>
       </Pane>
       <Pane prefHeight="510.0" prefWidth="340.0" style="-fx-background-color: #1b6cd7;">
@@ -206,30 +354,6 @@
             <TextField layoutX="167.0" layoutY="430.0" />
             <Button layoutX="110.0" layoutY="199.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" text="Insert" />
             <Button layoutX="110.0" layoutY="469.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" text="Update" />
-         </children>
-      </Pane>
-      <Pane fx:id="loginPane" prefHeight="510.0" prefWidth="340.0" style="-fx-background-color: grey;">
-         <children>
-            <Label layoutX="84.0" layoutY="14.0" text="Login" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="66.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="110.0" layoutY="98.0" prefHeight="35.0" prefWidth="130.0" text="To make new entries and edit existing ones" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
-            <Label layoutX="61.0" layoutY="162.0" text="Username" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Label>
-            <Line endX="350.0" endY="55.0" layoutX="-84.0" layoutY="84.0" startX="170.0" startY="55.0" stroke="WHITE" />
-            <Label layoutX="61.0" layoutY="267.0" text="Password" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Label>
-            <TextField fx:id="usernameTF" layoutX="61.0" layoutY="197.0" prefHeight="35.0" prefWidth="229.0" />
-            <Button fx:id="loginBtn" layoutX="106.0" layoutY="378.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="35.0" prefWidth="140.0" text="Login" />
-            <PasswordField fx:id="passwordTF" layoutX="61.0" layoutY="302.0" prefHeight="35.0" prefWidth="229.0" />
          </children>
       </Pane>
    </children>
