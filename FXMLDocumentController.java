@@ -22,12 +22,19 @@ import java.util.ResourceBundle;
 import javafx.beans.InvalidationListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 
 /**
@@ -48,7 +55,7 @@ public class FXMLDocumentController extends Window implements Initializable {
     private DatePicker  StaticDate,StartDate,EndDate,NewDate,UpdateDate;
     
     @FXML
-    private ChoiceBox firstCityCB, secondCityCB, cityCB1, cityCB2;
+    private ChoiceBox firstCityCB, secondCityCB, cityCB1, cityCB2, serverCB;
     
     @FXML
     private Pane loginPane;
@@ -81,8 +88,7 @@ public class FXMLDocumentController extends Window implements Initializable {
     }
  
     
-    
-     @FXML
+    @FXML
     private void handleUdpateAction(ActionEvent event) throws ParseException, IOException {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd");
         HashMap<String,List<Integer>> vals;
@@ -111,7 +117,7 @@ public class FXMLDocumentController extends Window implements Initializable {
     
     
     
-        @FXML
+    @FXML
     private void handleInsertAction(ActionEvent event) throws ParseException, IOException {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd");
         HashMap<String,List<Integer>> vals;
@@ -411,13 +417,72 @@ public class FXMLDocumentController extends Window implements Initializable {
 //       System.out.println(what);
 //        return result;
       }
+      
+      @FXML
+    private void graphHandler(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("graph.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("Range Graph");
+        //defining the axes
+        final CategoryAxis xAxis = new CategoryAxis();
+        final NumberAxis yAxis = new NumberAxis();
+        xAxis.setLabel("Day");
+        yAxis.setLabel("# Cases");
+        //creating the chart
+        final LineChart<String,Number> lineChart = new LineChart<String,Number>(xAxis,yAxis);
+                
+        lineChart.setTitle("Cases Graph");
+        XYChart.Series<String,Number> series1 = new XYChart.Series();
+        series1.setName("Active Cases");
+        XYChart.Series<String,Number> series2 = new XYChart.Series();
+        series2.setName("Healed Cases");
+        
+        // forloop for 
+        
+        for( ; ; ){
+            series1.getData().add(new XYChart.Data("3/5/3", 23));
+        }
+        
+//        series1.getData().add(new XYChart.Data("3/5/3", 23));
+//        series1.getData().add(new XYChart.Data("2", 14));
+//        series1.getData().add(new XYChart.Data("3", 15));
+//        series1.getData().add(new XYChart.Data("4", 24));
+//        series1.getData().add(new XYChart.Data("5", 34));
+//        series1.getData().add(new XYChart.Data("6", 36));
+//        series1.getData().add(new XYChart.Data("7", 22));
+//        series1.getData().add(new XYChart.Data("8", 45));
+//        series1.getData().add(new XYChart.Data("9", 43));
+//        series1.getData().add(new XYChart.Data("10", 17));
+//        series1.getData().add(new XYChart.Data("11", 29));
+//        series1.getData().add(new XYChart.Data("12", 25));
+//        
+//        series2.getData().add(new XYChart.Data("1", 65));
+//        series2.getData().add(new XYChart.Data("2", 43));
+//        series2.getData().add(new XYChart.Data("3", 23));
+//        series2.getData().add(new XYChart.Data("4", 24));
+//        series2.getData().add(new XYChart.Data("5", 34));
+//        series2.getData().add(new XYChart.Data("6", 36));
+//        series2.getData().add(new XYChart.Data("7", 22));
+//        series2.getData().add(new XYChart.Data("8", 5));
+//        series2.getData().add(new XYChart.Data("9", 43));
+//        series2.getData().add(new XYChart.Data("10", 6));
+//        series2.getData().add(new XYChart.Data("11", 12));
+//        series2.getData().add(new XYChart.Data("12", 53));
+        
+        Scene scene  = new Scene(lineChart,800,600);
+        lineChart.getData().add(series1);
+        lineChart.getData().add(series2);
+       
+        stage.setScene(scene);
+        stage.show();
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
         loginPane.setManaged(true);
         loginPane.setVisible(true);
-        
         
         StaticDate.setValue(LocalDate.now());
         StartDate.setValue(LocalDate.now());
@@ -440,6 +505,10 @@ public class FXMLDocumentController extends Window implements Initializable {
         cityCB2.getItems().removeAll(cityCB2.getItems());
         cityCB2.getItems().addAll("Nablus", "Hebron", "Jerusalem", "Jenin", "Ramallah", "Tulkarem");
         cityCB2.getSelectionModel().select("Nablus");
+        
+        serverCB.getItems().removeAll(serverCB.getItems());
+        serverCB.getItems().addAll("PHP", "Servlet");
+        serverCB.getSelectionModel().select("PHP");
     }    
     
 }
