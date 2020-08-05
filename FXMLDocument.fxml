@@ -20,7 +20,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="httpjavafx.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="httpjavafx.FXMLDocumentController">
    <children>
       <Pane layoutX="340.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="460.0" style="-fx-background-color: #a5c6ee;">
          <children>
@@ -48,8 +48,8 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="85.0" stroke="#6c839e" strokeType="INSIDE" width="301.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="264.0" text="Public Information" textFill="#0c3f7c" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="85.0" stroke="#6c839e" strokeType="INSIDE" width="320.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Public Information" textFill="#0c3f7c" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <font>
                         <Font name="System Bold" size="35.0" />
                      </font>
@@ -232,7 +232,7 @@
                         </DatePicker>
                      </children>
                   </HBox>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="333.0" layoutY="11.0" mnemonicParsing="false" onAction="#graphHandler" prefHeight="63.0" prefWidth="50.0" text="Show Graph" textAlignment="CENTER" wrapText="true">
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="333.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleRangeAction" prefHeight="63.0" prefWidth="50.0" text="Show Graph" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font size="10.0" />
                      </font>

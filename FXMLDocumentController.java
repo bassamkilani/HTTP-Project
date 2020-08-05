@@ -46,7 +46,7 @@ public class FXMLDocumentController extends Window implements Initializable {
     public static String servlet = "http://localhost:8080/JSP_server/Servlet";
     public static String Username = "";
     public static String Password = "";
-    public static int curr_server = 2;
+    public static int curr_server = 1;
     
     @FXML
     private Label noOfCasesHealed, noOfCasesActive, StaticNoCases, StaticNoHealed,RangeNoCases,RangeNoHealed;
@@ -130,7 +130,7 @@ public class FXMLDocumentController extends Window implements Initializable {
         int active = Integer.parseInt(newActive.getText()), 
         healed = Integer.parseInt(newHealed.getText());
 
-            Insert_Record(city, date, active, healed);
+        Insert_Record(city, date, active, healed);
     }
     
     
@@ -151,10 +151,11 @@ public class FXMLDocumentController extends Window implements Initializable {
 //        int active = vals.get(end).get(0)-vals.get(start).get(0);
 //        int healed = vals.get(end).get(1)-vals.get(start).get(1);
         
-        LocalDate next = LocalDate.parse(start).minusDays(1);
-        while ((next = next.plusDays(1)).isBefore(LocalDate.parse(end).plusDays(1))) {
-            System.out.println(next.toString() + ":" + vals.get(next.toString()).get(0) + "," + vals.get(next.toString()).get(1));
-        }
+        chart_pop(vals, start, end);
+//        LocalDate next = LocalDate.parse(start).minusDays(1);
+//        while ((next = next.plusDays(1)).isBefore(LocalDate.parse(end).plusDays(1))) {
+//            System.out.println(next.toString() + ":" + vals.get(next.toString()).get(0) + "," + vals.get(next.toString()).get(1));
+//        }
 //        RangeNoCases.setText(Integer.toString(active));
 //        RangeNoHealed.setText(Integer.toString(healed));
     }
@@ -185,7 +186,9 @@ public class FXMLDocumentController extends Window implements Initializable {
     public List<Integer> get_total(String date) throws MalformedURLException, IOException {
        List <Integer> vals = new ArrayList<Integer>();
     String dest_url = null;
-    switch(curr_server){
+    int index = serverCB.getSelectionModel().getSelectedIndex()+1;
+    System.out.print("value is  : "+index);
+    switch(index){
         case 1 :
             dest_url = php_url;
             break;
@@ -265,7 +268,8 @@ public class FXMLDocumentController extends Window implements Initializable {
         
         List <Integer> vals = new ArrayList<Integer>();
         String dest_url = null;
-        switch(curr_server){
+        int index = serverCB.getSelectionModel().getSelectedIndex()+1;
+        switch(index){
             case 1 :
                 dest_url = php_url;
                 break;
@@ -304,7 +308,7 @@ public class FXMLDocumentController extends Window implements Initializable {
     
     
     public  void Insert_Record(String city,String date,int active,int healed) throws MalformedURLException, IOException{
-     String dest_url = null;
+      String dest_url = null;
         switch(curr_server){
             case 1 :
                 dest_url = php_url;
@@ -313,9 +317,9 @@ public class FXMLDocumentController extends Window implements Initializable {
                 dest_url = servlet;
                 break; 
         }
-        String request = dest_url + "?city="+city+"&date="+date+"&active="+active+"&healed="+healed;
+        String request = "city="+city+"&date="+date+"&active="+active+"&healed="+healed;
     
-        URL url = new URL(request);
+        URL url = new URL(dest_url);
 
         URLConnection connect = url.openConnection();
         connect.setAllowUserInteraction(true);
@@ -344,20 +348,20 @@ public class FXMLDocumentController extends Window implements Initializable {
                 dest_url = servlet;
                 break; 
         }
-        dest_url+="?id="+id;
+        String request ="id="+id;
         
         if(!city.isEmpty()){
-            dest_url+="&city="+city; 
+            request+="&city="+city; 
             
         }
         if(!date.isEmpty()){
-            dest_url+="&date="+date; 
+            request+="&date="+date; 
         }
         if(active!=-1){
-            dest_url+="&active="+active; 
+            request+="&active="+active; 
         }  
         if(healed!=-1){
-            dest_url+="&healed="+healed; 
+            request+="&healed="+healed; 
         }
         URL url = new URL(dest_url);
 
@@ -368,7 +372,7 @@ public class FXMLDocumentController extends Window implements Initializable {
         
         BufferedOutputStream out = new BufferedOutputStream(connect.getOutputStream());
    
-        out.write(dest_url.getBytes());
+        out.write(request.getBytes());
         out.close();
         
         InputStream in = connect.getInputStream();
@@ -378,7 +382,7 @@ public class FXMLDocumentController extends Window implements Initializable {
         }
 }
     
-      public static char login (String name ,String pass) throws MalformedURLException, IOException{
+      public  char login (String name ,String pass) throws MalformedURLException, IOException{
          String dest_url = null;
         switch(curr_server){
             case 1 :
@@ -388,9 +392,9 @@ public class FXMLDocumentController extends Window implements Initializable {
                 dest_url = servlet;
                 break; 
         }
-        String request = dest_url + "?name="+name+"&pass="+pass;
+        String request = "name="+name+"&pass="+pass;
     
-        URL url = new URL(request);
+        URL url = new URL(dest_url);
 
         URLConnection connect = url.openConnection();
         connect.setAllowUserInteraction(true);
@@ -417,6 +421,51 @@ public class FXMLDocumentController extends Window implements Initializable {
 //       System.out.println(what);
 //        return result;
       }
+      
+      
+      
+
+    private void chart_pop(HashMap<String,List<Integer>> Values,String start , String end) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("graph.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("Range Graph");
+        //defining the axes
+        final CategoryAxis xAxis = new CategoryAxis();
+        final NumberAxis yAxis = new NumberAxis();
+        xAxis.setLabel("Day");
+        yAxis.setLabel("# Cases");
+        //creating the chart
+        final LineChart<String,Number> lineChart = new LineChart<String,Number>(xAxis,yAxis);
+                
+        lineChart.setTitle("Cases Graph");
+        XYChart.Series<String,Number> series1 = new XYChart.Series();
+        series1.setName("Active Cases");
+        XYChart.Series<String,Number> series2 = new XYChart.Series();
+        series2.setName("Healed Cases");
+        
+        // forloop for 
+        
+       LocalDate next = LocalDate.parse(start).minusDays(1);
+       while ((next = next.plusDays(1)).isBefore(LocalDate.parse(end).plusDays(1))) {
+            System.out.println(next.toString() + ":" + Values.get(next.toString()).get(0) + "," + Values.get(next.toString()).get(1));
+            series1.getData().add(new XYChart.Data(next.toString(),Values.get(next.toString()).get(0)));
+            series2.getData().add(new XYChart.Data(next.toString(),Values.get(next.toString()).get(1)));
+        }
+     
+        Scene scene  = new Scene(lineChart,800,600);
+        lineChart.getData().add(series1);
+        lineChart.getData().add(series2);
+       
+        stage.setScene(scene);
+        stage.show();
+      }
+      
+      
+      
+      
+      
+      
       
       @FXML
     private void graphHandler(ActionEvent event) throws IOException {
@@ -470,12 +519,12 @@ public class FXMLDocumentController extends Window implements Initializable {
 //        series2.getData().add(new XYChart.Data("11", 12));
 //        series2.getData().add(new XYChart.Data("12", 53));
         
-        Scene scene  = new Scene(lineChart,800,600);
-        lineChart.getData().add(series1);
-        lineChart.getData().add(series2);
-       
-        stage.setScene(scene);
-        stage.show();
+//        Scene scene  = new Scene(lineChart,800,600);
+//        lineChart.getData().add(series1);
+//        lineChart.getData().add(series2);
+//       
+//        stage.setScene(scene);
+//        stage.show();
     }
     
     @Override
